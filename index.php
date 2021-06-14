@@ -42,10 +42,11 @@ if(isset($_POST['enviar']))
         $header= "From: " . $correo;
         $to_email = $_POST['email_list'];
         
+        $email_message = $nombre . " ha enviado un nuevo correo.\n" . "Mensaje: " . $mensaje;
 
-        $mail = mail($to_email,$asunto,$mensaje,$header);
+        $mail = mail($to_email,$asunto,$email_message,$header);
         if($mail){
-            echo "<h4>¡Correo enviado exitosamente!</h4>";
+            echo "<p>¡Correo enviado exitosamente!</p>";
 	    }
     }
 } 
