@@ -37,13 +37,15 @@ if(isset($_POST['enviar'])){
         $mensaje=$_POST['mensaje'];
         $correo=$_POST['correo'];
 
-        $header= "From: " . $correo;
+        $headers = "From: $correo\n";
+        $headers .= "MIME-Version: 1.0\n";
+        $headers .= "Content-type: text/html; charset=iso-8859-1\n";
+
         $to_email = $_POST['email_list'];
         
         $email_message = $nombre . " ha enviado un nuevo correo." . "Mensaje: " . $mensaje;
 
-        $mail = mail($to_email,$asunto,$email_message,$header);
-        if($mail){
+        if(mail($to_email,$asunto,$email_message,$headers)){
             echo "<p>¡Correo enviado exitosamente!</p>";
 	    }
     }
