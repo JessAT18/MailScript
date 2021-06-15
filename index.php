@@ -18,8 +18,8 @@
 	<label for="email_list">Selecciona el departamento con el que deseas comunicarte: </label>
 	<select name="email_list">
         <option>Selecciona una de las opciones</option>
-		<option value="compras@jessaquinot.tk">Departamento de Compras</option>
-		<option value="ventas@jessaquinot.tk">Departamento de Ventas</option>
+		<option value="inscripciones@institutofrankfurt.edu.bo">Departamento de Inscripciones</option>
+		<option value="soporte@institutofrankfurt.edu.bo">Departamento de Soporte</option>
 	</select>
 
 	<input type="text" placeholder="Nombre" name="nombre">
@@ -30,10 +30,8 @@
     </form>
 
 <?php    
-if(isset($_POST['enviar']))
-{
-    if(!empty($_POST['email_list']) && !empty($_POST['nombre']) && !empty($_POST['asunto']) && !empty($_POST['mensaje']) && !empty($_POST['correo']))
-    {
+if(isset($_POST['enviar'])){
+    if(!empty($_POST['email_list']) && !empty($_POST['nombre']) && !empty($_POST['asunto']) && !empty($_POST['mensaje']) && !empty($_POST['correo'])){
         $nombre=$_POST['nombre'];
         $asunto=$_POST['asunto'];
         $mensaje=$_POST['mensaje'];
@@ -42,7 +40,7 @@ if(isset($_POST['enviar']))
         $header= "From: " . $correo;
         $to_email = $_POST['email_list'];
         
-        $email_message = $nombre . " ha enviado un nuevo correo.\n" . "Mensaje: " . $mensaje;
+        $email_message = $nombre . " ha enviado un nuevo correo." . "Mensaje: " . $mensaje;
 
         $mail = mail($to_email,$asunto,$email_message,$header);
         if($mail){
